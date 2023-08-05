@@ -1,0 +1,11 @@
+Some cheat sheet to upgrade a reverse shell into a stable and fully usable TTY shell. You need just to copy them and paste them on the target.
+
+First, you need to verify if python is installed on the target system by running this command: which python python2 python3
+
+Depending on the python version installed on the target system, you can now execute the below commands to get a fully usable or better TTY shell:
+
+ python3 -c 'import pty;pty.spawn("/bin/bash")'
+ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+ export TERM=xterm-256color # OR type just: export TERM=xterm
+ stty raw -echo ; fg ; reset
+ stty columns 200 raws 200 # OR type just: tput cols 200; tput lines 200
